@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Image image;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +29,8 @@ namespace WindowsFormsApplication1
             DialogResult dr = open.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                image = Bitmap.FromFile(open.FileName);
+                image = Bitmap.FromFile(open.FileName).GetThumbnailImage(pictureBox1.Width,pictureBox1.Height,null,IntPtr.Zero);
+
                 pictureBox1.Image = image;
                 btnSave.Enabled = true;
             }
